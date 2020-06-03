@@ -18,24 +18,7 @@
 <body>
     <h1>React</h1>
     <div id="root" onclick="doCount();">wait...</div>
-    <script>
-        let counter = 0;
-        let dom = document.querySelector('#root');
-        let da_kono = "だーこの"
-        doCount();
-
-        function doCount(){
-            if (counter % 2 === 0){
-                da_kono = "だーこの";
-            }else {
-                da_kono = "だーこのじゃない";
-            }
-            let element = React.createElement(
-                'p', {}, "count: " + counter + " " + da_kono
-            );
-            ReactDOM.render(element, dom);
-            counter++;
-        };
-    </script>
+    <div id="riit">wait...</div>
+    <script src="./script.js"></script>
 </body>
 </html>

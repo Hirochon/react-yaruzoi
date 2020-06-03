@@ -6,6 +6,7 @@
     <title>React</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
     <style>
         #root {
             cursor: pointer;
@@ -17,8 +18,39 @@
 </head>
 <body>
     <h1>React</h1>
-    <div id="root" onclick="doCount();">wait...</div>
-    <div id="riit">wait...</div>
-    <script src="./script.js"></script>
+    <div id="root">wait...</div>
+
+    <script type="text/babel">
+        let dom = document.querySelector('#root');
+
+        const message = "メッセージを表示します。"
+
+        const msg = {
+            fontSize:"20pt",
+            fontWeight: '700',
+            color:"red",
+            border:"1px solid blue"
+        }
+
+        let printMsg = (msg, size, color) =>{
+            const style = {
+                fontSize: size + "pt",
+                fontWeight: '700',
+                color: color,
+                border: "1px solid " + color
+            };
+            return <p style={style}>{msg}</p>;
+        }
+
+        let el = (
+            <div>
+                {printMsg('ひろちの', 14, '#00f')}
+                {printMsg('一番の推しは', 20, '#00f')}
+                {printMsg('齋藤飛鳥です！！', 30, '#00f')}
+            </div>
+        );
+        
+        ReactDOM.render(el, dom);
+    </script>
 </body>
 </html>

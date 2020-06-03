@@ -37,13 +37,15 @@ class App extends Component {
     draw(d){
         let s = {
             position: "absolute",
-            left:(d.x - 25) + "px",
-            top: (d.y - 25) + "px",
-            width: "50px",
-            height: "50px",
-            backgroundColor: "#66f3"
+            left:(d.x - 40) + "px",
+            top: (d.y - 15) + "px",
+            width: "80px",
+            height: "30px",
+            textAlign: "center",
+            backgroundColor: "#0005",
+            color: "#9df"
         };
-        return <div style={s}></div>;
+        return <div style={s}>だーこの</div>;
     }
 
     render(){

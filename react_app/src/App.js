@@ -2,56 +2,43 @@ import React, {Component} from 'react';
 // import Rect from './Rect';
 import './App.css';
 
+let data = {title: 'Title', message:'This is sample message.'};
+
+const SampleContext = React.createContext(data);
+
 class App extends Component {
-    input = '';
+    render() {
+        return (
+            <div>
+                <h1>Context</h1>
+                <Title />
+                <Message />
+            </div>
+        )
+    }
+}
 
-    msgStyle = {
-        fontSize: "20pt",
-        color: "#900",
-        margin: "20px 0px",
-        padding: "5px",
-    }
-    inputStyle = {
-        fontSize: "12pt",
-        padding: "5px"
-    }
+class Title extends Component {
+    static contextType = SampleContext;
 
-    constructor(props){
-        super(props);
-        this.state = {
-            message: 'type your name:'
-        };
-        this.doChange = this.doChange.bind(this);
-        this.doSubmit = this.doSubmit.bind(this);
+    render() {
+        return (
+            <div>
+                <h2>{this.context.title}</h2>
+            </div>
+        );
     }
+}
 
-    doChange(event) {
-        this.input = event.target.value;
-    }
-
-    doSubmit(event) {
-        this.setState({
-            message: "Hello, " + this.input + "!!"
-        });
-        event.preventDefault();
-    }
+class Message extends Component {
+    static contextType = SampleContext;
 
     render(){
         return (
             <div>
-                <h1>React</h1>
-                <h2>{this.state.message}</h2>
-                <form onSubmit={this.doSubmit}>
-                    <label>
-                        <span style={this.inputStyle}></span>
-                        Message:
-                        <input type="text" style={this.inputStyle} onChange={this.doChange}
-                        required pattern="[A-Za-z _,.]+" />
-                    </label>
-                    <input type="submit" style={this.inputStyle} value="click" />
-                </form>
+                <p>{this.context.message}</p>
             </div>
-        );
+        )
     }
 }
 

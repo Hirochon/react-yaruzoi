@@ -1,59 +1,81 @@
 import React, {Component} from 'react';
-// import Rect from './Rect';
+import {connect} from 'react-redux';
 import './App.css';
 
-let thema = {
-    light: {
-        backgroundColor: "#eef",
-        color: "#006",
-        padding: "10px"
-    },
-    dark: {
-        backgroundColor: "#006",
-        color: "#eef",
-        padding: "10px"
-    }
-};
 
-const ThemaContext = React.createContext(thema.dark);
-
-class App extends Component {
-    static contextType = ThemaContext;
-
-    render() {
-        return (
-            <div style={this.context}>
-                <h1>Context</h1>
-                <Title value="Contet Page" />
-                <Message value="This is Content sample." />
-                <Message value="※これはThemaのサンプルです。" />
-            </div>
-        );
-    }
+// ステートのマッピング
+function mappingState(state){
+    return state;
 }
 
-class Title extends Component {
-    static contextType = ThemaContext;
+// Appコンポーネント
+class App extends Component {
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return (
             <div>
-                <h2 style={this.context}>{this.props.value}</h2>
+                <h1>Redux</h1>
+                <Message />
+                <Button />
             </div>
         );
     }
 }
 
+// ストアのコネクト
+App = connect()(App);
+
+//メッセージ表示のコンポーネント
 class Message extends Component {
-    static contextType = ThemaContext;
+    style = {
+        fontSize: "20pt",
+        padding: "20px 5px"
+    }
+
+    render() {
+        return (
+            <p style={this.style}>
+                {this.props.message}: {this.props.counter}
+            </p>
+        );
+    }
+}
+
+Message = connect(mappingState)(Message);
+
+class Button extends Component {
+    style = {
+        fontSize: "16pt",
+        padding: "5px 10px"
+    }
+
+    constructor(props){
+        super(props);
+        this.doAction = this.doAction.bind(this);
+    }
+
+    // ボタンクリックでディスパッチを実行
+    doAction(e){
+        if (e.shiftKey){
+            this.props.dispatch({type:'DECREMENT'});
+        }
+        else{
+            this.props.dispatch({type:'INCREMENT'});
+        }
+    }
 
     render(){
         return (
-            <div>
-                <p style={this.context} >{this.props.value}</p>
-            </div>
-        )
+            <button style={this.style} onClick={this.doAction}>
+                click
+            </button>
+        );
     }
 }
+
+Button = connect()(Button);
 
 export default App;

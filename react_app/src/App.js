@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './App.css';
 import Memo from './memo/Memo';
-import AddForm from './memo/Memo';
-import FindForm from './memo/Memo';
-import DelForm from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
 
 // Appコンポーネント
@@ -13,9 +13,9 @@ class App extends Component{
         width: "250px"
     }
 
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render() {
         return (

@@ -79,7 +79,7 @@ export function addMemo(text){
 }
 
 // メモ削除のアクション
-export function addMemo(text){
+export function deleteMemo(num){
     return {
         type: 'DELETE',
         index: num

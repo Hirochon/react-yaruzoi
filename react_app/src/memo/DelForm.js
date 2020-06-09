@@ -21,7 +21,7 @@ class DelForm extends Component{
             number: 0
         }
         this.doChange = this.doChange.bind(this);
-        this.doAction = this.doChange.bind(this);
+        this.doAction = this.doAction.bind(this);
     }
 
     doChange(e){

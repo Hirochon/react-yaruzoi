@@ -65,7 +65,7 @@ function deleteReduce(state, action){
         message: 'delete "' + action.index + '":',
         mode: 'delete',
         fdata: []
-    }
+    };
 }
 
 // アクションクリエイター

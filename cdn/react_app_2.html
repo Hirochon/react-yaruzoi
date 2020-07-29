@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1>React</h1>
-  <div id="root" onClick="doCount();">wait...</div>
+  <div id="root">wait...</div>
   <script type="text/babel">
     let dom = document.querySelector('#root');
 
@@ -26,13 +26,47 @@
       padding: "5px 50px",
     };
 
+    const th = {
+      color: 'white',
+      backgroundColor: '#006',
+      padding: '5px 15px'
+    };
+
+    const td = {
+      color: 'black',
+      padding: '5px 15px',
+      border: '1px solid gray'
+    };
+
     let message_t = 'メッセージを表示するよっ！！';
     let message_f = 'メッセージを表示しない！？！？';
-
     let flg = false;
+
+    let title = ['name', 'mail', 'age'];
+
+    let data = [
+      {name: 'Taro', mail: 'taro@yamada', age: 45},
+      {name: 'Hanako', mail: 'hanako@flower', age: 37},
+      {name: 'Sachiko', mail: 'sachiko@happy', age: 29},
+    ];
 
     let el = (
       <div>
+        <table style={table}>
+          <tr>
+            {
+              title.map((ele) => <th style={th}>{ele}</th>)
+            }
+          </tr>
+          {data.map((value) =>
+            <tr>
+              <td style={td}>{value.name}</td>
+              <td style={td}>{value.mail}</td>
+              <td style={td}>{value.age}</td>
+            </tr>
+          )
+          }
+        </table>
         <p style={msg_s}>
         {flg ?
           message_t
